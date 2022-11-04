@@ -27,6 +27,13 @@ public struct TileInfo
 		return new Vector3(x, y, z);
     }
 
+	public void SetGridIndex(Vector3 gridIndex)
+    {
+		x = (int)gridIndex.x;
+		y = (int)gridIndex.y;
+		z = (int)gridIndex.z;
+	}
+
 	public override bool Equals(object obj)
 	{
 		if (obj == null) return false;
@@ -62,6 +69,31 @@ public class Tile : MonoBehaviour
 		_Info = new TileInfo((int)gridIndex.x, (int)gridIndex.y, (int)gridIndex.z);
 		SetShape(shape);
 	}
+
+	public void SetGridIndex(Vector3 gridIndex)
+    {
+		_Info.SetGridIndex(gridIndex);
+	}
+
+
+	public void Animation_MoveIndex(Vector3 gridIndex_start, Vector3 gridIndex_dest, float durationTime = 0.1f)
+    {
+		StartCoroutine(Cor_Animation_MoveIndex(gridIndex_start, gridIndex_dest, durationTime));
+    }
+
+	IEnumerator Cor_Animation_MoveIndex(Vector3 gridIndex_start, Vector3 gridIndex_dest, float durationTime = 0.1f)
+    {
+		Vector3 startPos = GridMap.inst.GridIndexToPosition(gridIndex_start);
+		Vector3 destPos = GridMap.inst.GridIndexToPosition(gridIndex_dest);
+
+		for (float i = 0.0f; i <= durationTime; i += Time.deltaTime)
+        {
+			float amount = i / durationTime * 1.0f;
+			transform.localPosition = Vector3.Lerp(startPos, destPos, amount);
+			yield return null;
+        }
+		yield return null;
+    }
 
 
 	private Coroutine _coroutine = null;

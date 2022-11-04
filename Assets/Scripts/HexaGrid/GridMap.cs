@@ -5,7 +5,16 @@ using System.Linq;
 
 public class GridMap : MonoBehaviour 
 {
+	public static GridMap inst;
 	public bool _debug = false;
+
+	private int[,] _directionMatrix = new int[6, 3] { { -1, 1, 0 },
+												{ 0, 1, -1 },
+												{ 1, 0, -1 },
+												{ -1, 0, 1 },
+												{ 0, -1, 1 },
+												{ 1, -1, 0 }};
+	public int[,] DirectionMatrix { get { return _directionMatrix; } }
 
 	public int mapWidth;
 	public int mapHeight;
@@ -16,30 +25,14 @@ public class GridMap : MonoBehaviour
 
 	private void Awake()
 	{
+		if (!inst) inst = this;
+
 		GenerateGrid();
 	}
 
     private void OnDestroy()
     {
 		ClearGrid();
-	}
-
-    private void Update()
-	{
-		if (Input.GetMouseButtonDown(0))
-		{
-			Vector3 mousePos = Input.mousePosition;
-			int layerMask = 1 << LayerMask.NameToLayer("Tile");
-			RaycastHit2D hitInfo = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(mousePos), Vector2.zero, 1.0f, layerMask);
-
-			if (hitInfo)
-			{
-				Tile tile = hitInfo.transform.GetComponent<Tile>();
-				TileMatching(tile);
-
-				Debug.Log(hitInfo.transform.gameObject.name);
-			}
-		}
 	}
 	
 #if UNITY_EDITOR
@@ -57,10 +50,12 @@ public class GridMap : MonoBehaviour
 	{
 		ClearGrid();
 
-		TileShape[] shapeRandomList = { TileShape.Red, TileShape.Green, TileShape.Orange, TileShape.Purple, TileShape.Blue, TileShape.ToyTops };
+		//TileShape[] shapeRandomList = { TileShape.Red, TileShape.Green, TileShape.Orange, TileShape.Purple, TileShape.Blue, TileShape.ToyTops };
+		TileShape[] shapeRandomList = { TileShape.Red, TileShape.Green, TileShape.Orange, TileShape.Purple, TileShape.Blue };
 
 		int width = mapWidth - 1;
 		int height = mapHeight;
+		int tileCount = 0;
 
 		for (int q = -width; q <= width; q++)
 		{
@@ -70,14 +65,12 @@ public class GridMap : MonoBehaviour
 			for (int r = r1; r < r2; r++)
 			{
 				Vector3 gridIndex = new Vector3(q, r, -q - r);
-				Vector3 tilePostion = Vector3.zero;
-				tilePostion.x = hexRadius * 3.0f / 2.0f * q;
-				tilePostion.y = hexRadius * Mathf.Sqrt(3.0f) * (r + q / 2.0f);
+				Vector3 tilePostion = GridIndexToPosition(gridIndex);
 
 				int randomShapeMax = shapeRandomList.Length;
 				int randomShape = UnityEngine.Random.Range(0, randomShapeMax);
 
-				string objName = string.Format("Tile[{0},{1},{2}]", gridIndex.x, gridIndex.y, gridIndex.z); ;
+				string objName = string.Format("Tile[{0}]", tileCount++); ;
 				Tile tile = CreateTileObject(tilePostion, objName);
 				tile.Init(shapeRandomList[randomShape], gridIndex);
 
@@ -101,7 +94,7 @@ public class GridMap : MonoBehaviour
 
 		GameObject go = Instantiate(tilePrefab);
 		go.name = name;
-		go.transform.position = postion;
+		go.transform.localPosition = postion;
 		go.transform.SetParent(transform);
 		
 		Tile tile = go.GetComponent<Tile>();
@@ -118,9 +111,28 @@ public class GridMap : MonoBehaviour
 		return null;
 	}
 
-	public void TileMatching(Tile tile)
+
+	public Tile TileSwap(Tile tile, TileDirection direction)
     {
-		if (tile.GetShape() == TileShape.ToyTops) return;
+		if (tile == null) return null;
+
+		Vector3 indexVector = new Vector3(_directionMatrix[(int)direction, 0],
+											_directionMatrix[(int)direction, 1],
+											_directionMatrix[(int)direction, 2]);
+
+		Vector3 findIndex = indexVector + tile.GetInfo().GetGridIndex();
+		Tile getTile = GetTileFromGridIndex(findIndex);
+		if (getTile == null) return null;
+		getTile.SetGridIndex(tile.GetInfo().GetGridIndex());
+		tile.SetGridIndex(findIndex);
+
+		return getTile;
+	}
+
+
+	public int TileMatching(Tile tile)
+    {
+		if (tile.GetShape() == TileShape.ToyTops) return 0;
 
 		List<Tile> matchingList_Line = new List<Tile>();
 		matchingList_Line = TileMatching_Line(tile);
@@ -146,6 +158,17 @@ public class GridMap : MonoBehaviour
 		{
 			toyTiles[j].Explosion();
 		}
+		return matchedTiles.Count;
+	}
+
+	public Vector3 GridIndexToPosition(Vector3 gridIndex)
+    {
+		Vector3 tilePostion = Vector3.zero;
+
+		float radius = hexRadius;
+		tilePostion.x = radius * 3.0f / 2.0f * gridIndex.x;
+		tilePostion.y = radius * Mathf.Sqrt(3.0f) * (gridIndex.y + gridIndex.x / 2.0f);
+		return tilePostion;
 	}
 
 	private List<Tile> TileMatching_Line(Tile tile)
