@@ -17714,6 +17714,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1969661181}
   - component: {fileID: 1969661182}
+  - component: {fileID: 1969661183}
   m_Layer: 0
   m_Name: GridMap
   m_TagString: Untagged
@@ -17754,6 +17755,18 @@ MonoBehaviour:
   mapHeight: 3
   hexRadius: 0.38
   tilePrefab: {fileID: 7332235787663622600, guid: c95cb2bbb3f3d904db842cf113fd615e, type: 3}
+--- !u!114 &1969661183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1969661180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d1ac3b602dd45f4189fd65f6cd24c94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1972767219
 GameObject:
   m_ObjectHideFlags: 0

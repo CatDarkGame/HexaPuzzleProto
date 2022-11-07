@@ -58,7 +58,14 @@ public class Tile : MonoBehaviour
 {
 	public bool _debug = false;
 
-	private TileInfo _Info;
+	[SerializeField] private TileInfo _Info;
+
+	[SerializeField] private SpriteRenderer _spriteRenderer = null;
+	public Sprite[] _shapeImages = null;
+
+	private int _hp = 1;
+	public int GetHp { get { return _hp; } }
+
 	public TileInfo GetInfo()
     {
 		return _Info;
@@ -67,6 +74,7 @@ public class Tile : MonoBehaviour
 	public void Init(TileShape shape, Vector3 gridIndex)
     {
 		_Info = new TileInfo((int)gridIndex.x, (int)gridIndex.y, (int)gridIndex.z);
+		_hp = 1;
 		SetShape(shape);
 	}
 
@@ -75,6 +83,13 @@ public class Tile : MonoBehaviour
 		_Info.SetGridIndex(gridIndex);
 	}
 
+	public bool Hit(int damage = 1)
+    {
+		bool isDie = false;
+		_hp -= damage;
+		if (_hp <= 0) isDie = true;
+		return isDie;
+    }
 
 	public void Animation_MoveIndex(Vector3 gridIndex_start, Vector3 gridIndex_dest, float durationTime = 0.1f)
     {
@@ -92,35 +107,26 @@ public class Tile : MonoBehaviour
 			transform.localPosition = Vector3.Lerp(startPos, destPos, amount);
 			yield return null;
         }
+		transform.localPosition = destPos;
 		yield return null;
     }
 
-
-	private Coroutine _coroutine = null;
-	public void Click()
+	public void Animation_MovePos(Vector3 startPos, Vector3 destPos, float durationTime = 0.1f)
 	{
-		if(_coroutine!=null)
-        {
-			StopCoroutine(_coroutine);
-			_coroutine = null;
-		}
-		_coroutine = StartCoroutine(Cor_Click());
+		StartCoroutine(Cor_Animation_MovePos(startPos, destPos, durationTime));
 	}
 
-	private IEnumerator Cor_Click()
+	IEnumerator Cor_Animation_MovePos(Vector3 startPos, Vector3 destPos, float durationTime = 0.1f)
 	{
-		SpriteRenderer sprite = _spriteRenderer;
-		if (sprite == null) yield break;
-
-		sprite.color = Color.red;
-		yield return new WaitForSeconds(1.0f);
-		sprite.color = Color.white;
+		for (float i = 0.0f; i <= durationTime; i += Time.deltaTime)
+		{
+			float amount = i / durationTime * 1.0f;
+			transform.localPosition = Vector3.Lerp(startPos, destPos, amount);
+			yield return null;
+		}
+		transform.localPosition = destPos;
 		yield return null;
 	}
-
-	
-	[SerializeField] private SpriteRenderer _spriteRenderer = null;
-	public Sprite[] _shapeImages = null;
 
 	public void SetShape(TileShape shape)
     {
@@ -133,27 +139,6 @@ public class Tile : MonoBehaviour
 	public TileShape GetShape()
 	{
 		return _Info.shape;
-	}
-
-	public void Explosion()
-    {
-		if (_coroutine != null)
-		{
-			StopCoroutine(_coroutine);
-			_coroutine = null;
-		}
-		_coroutine = StartCoroutine(Cor_Explosion());
-	}
-
-	private IEnumerator Cor_Explosion()
-	{
-		SpriteRenderer sprite = _spriteRenderer;
-		if (sprite == null) yield break;
-
-		sprite.color = Color.green;
-		yield return new WaitForSeconds(1.0f);
-		sprite.color = Color.white;
-		yield return null;
 	}
 
 	private void OnGUI()

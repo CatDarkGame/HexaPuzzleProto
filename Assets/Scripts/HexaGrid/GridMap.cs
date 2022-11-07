@@ -16,12 +16,17 @@ public class GridMap : MonoBehaviour
 												{ 1, -1, 0 }};
 	public int[,] DirectionMatrix { get { return _directionMatrix; } }
 
-	public int mapWidth;
-	public int mapHeight;
-	public float hexRadius = 1;
+	[SerializeField] private int mapWidth;
+	[SerializeField] private int mapHeight;
+	[SerializeField] private float hexRadius = 1;
+
+	public int MapWidth { get { return mapWidth; } }
+	public int MapHeight { get { return mapHeight; } }
+	
+	private List<Tile> _tileList = new List<Tile>();
 	public GameObject tilePrefab = null;
 
-	private List<Tile> _tileList = new List<Tile>();
+	private int _tileCreateCount = 0;
 
 	private void Awake()
 	{
@@ -50,13 +55,9 @@ public class GridMap : MonoBehaviour
 	{
 		ClearGrid();
 
-		//TileShape[] shapeRandomList = { TileShape.Red, TileShape.Green, TileShape.Orange, TileShape.Purple, TileShape.Blue, TileShape.ToyTops };
-		TileShape[] shapeRandomList = { TileShape.Red, TileShape.Green, TileShape.Orange, TileShape.Purple, TileShape.Blue };
-
 		int width = mapWidth - 1;
 		int height = mapHeight;
-		int tileCount = 0;
-
+	
 		for (int q = -width; q <= width; q++)
 		{
 			int r1 = Mathf.Max(-width, -q - width);
@@ -65,44 +66,41 @@ public class GridMap : MonoBehaviour
 			for (int r = r1; r < r2; r++)
 			{
 				Vector3 gridIndex = new Vector3(q, r, -q - r);
-				Vector3 tilePostion = GridIndexToPosition(gridIndex);
 
-				int randomShapeMax = shapeRandomList.Length;
-				int randomShape = UnityEngine.Random.Range(0, randomShapeMax);
-
-				string objName = string.Format("Tile[{0}]", tileCount++); ;
-				Tile tile = CreateTileObject(tilePostion, objName);
-				tile.Init(shapeRandomList[randomShape], gridIndex);
-
-				_tileList.Add(tile);
+				TileShape shape = GetTileShapeRandom();
+				Tile tile = CreateTileObject(gridIndex, shape);
 			}
 		}
 	}
 
 	public void ClearGrid() 
 	{
-		for(int i=0;i< _tileList.Count;i++)
+		_tileCreateCount = 0;
+		for (int i=0;i< _tileList.Count;i++)
         {
 			DestroyImmediate(_tileList[i].gameObject, false);
 		}
 		_tileList.Clear();
 	}
 
-	
-	// 타일 생성
-	private Tile CreateTileObject(Vector3 postion, string name) {
+
+	public Tile CreateTileObject(Vector3 gridIndex, TileShape tileShape)
+	{
+		Vector3 tilePostion = GridIndexToPosition(gridIndex);
+		string objName = string.Format("Tile[{0}]", _tileCreateCount++); ;
 
 		GameObject go = Instantiate(tilePrefab);
 		go.name = name;
-		go.transform.localPosition = postion;
+		go.transform.localPosition = tilePostion;
 		go.transform.SetParent(transform);
-		
-		Tile tile = go.GetComponent<Tile>();
 
+		Tile tile = go.GetComponent<Tile>();
+		tile.Init(tileShape, gridIndex);
+		_tileList.Add(tile);
 		return tile;
 	}
 
-	private Tile GetTileFromGridIndex(Vector3 gridIndex)
+	public Tile GetTileFromGridIndex(Vector3 gridIndex)
 	{
 		for (int i = 0; i < _tileList.Count; i++)
 		{
@@ -111,11 +109,78 @@ public class GridMap : MonoBehaviour
 		return null;
 	}
 
+	public void KillTile(Tile tile)
+    {
+		if (tile == null) return;
+
+		_tileList.Remove(tile);
+		Destroy(tile.gameObject);
+	}
+
+	public List<Tile> PullDownTiles(Vector3 gridIndex)
+	{
+		int r1 = Mathf.Max(-((int)gridIndex.x + mapHeight), -mapHeight);
+		int r2 = Mathf.Max((int)gridIndex.x, 0);
+		List<Tile> pullTiles = new List<Tile>();
+		for (int i = r1; i < mapHeight - r2; i++)
+		{
+			Vector3 checkIndex = new Vector3(gridIndex.x, i, -gridIndex.x -i);
+			Tile tile = GetTileFromGridIndex(checkIndex);
+			if (tile == null) continue;
+			pullTiles.Add(tile);
+		}
+
+		int pullTileCount = 0;
+		for (int i = r1; i < mapHeight - r2; i++)
+		{
+			if (pullTiles.Count <= pullTileCount) break;
+			Tile tile = pullTiles[pullTileCount++];
+			if (tile == null) continue;
+			Vector3 checkIndex = new Vector3(gridIndex.x, i, -gridIndex.x - i);
+			tile.SetGridIndex(checkIndex);
+		}
+		
+		return pullTiles;
+	}
+
+	public List<Tile> ReloadTiles()
+    {
+		int width = mapWidth - 1;
+		int height = mapHeight;
+		List<Tile> reloadTiles = new List<Tile>();
+		for (int q = -width; q <= width; q++)
+		{
+			int r1 = Mathf.Max(-width, -q - width);
+			int r2 = Mathf.Min(height, -q + height);
+
+			for (int r = r1; r < r2; r++)
+			{
+				Vector3 gridIndex = new Vector3(q, r, -q - r);
+				Tile checkTile = GetTileFromGridIndex(gridIndex);
+				if (checkTile != null) continue;
+				TileShape shape = GetTileShapeRandom();
+				Tile tile = CreateTileObject(gridIndex, shape);
+				
+				reloadTiles.Add(tile);
+			}
+		}
+		return reloadTiles;
+	}
+
+	public TileShape GetTileShapeRandom()
+    {
+		TileShape[] shapeRandomList = { TileShape.Red, TileShape.Green, TileShape.Orange, TileShape.Purple, TileShape.Blue, TileShape.ToyTops };
+		//TileShape[] shapeRandomList = { TileShape.Red, TileShape.Green, TileShape.Orange, TileShape.Purple, TileShape.Blue };
+		int randomShapeMax = shapeRandomList.Length;
+		int randomShape = UnityEngine.Random.Range(0, randomShapeMax);
+		return shapeRandomList[randomShape];
+	}
+
+
 
 	public Tile TileSwap(Tile tile, TileDirection direction)
     {
 		if (tile == null) return null;
-
 		Vector3 indexVector = new Vector3(_directionMatrix[(int)direction, 0],
 											_directionMatrix[(int)direction, 1],
 											_directionMatrix[(int)direction, 2]);
@@ -130,9 +195,10 @@ public class GridMap : MonoBehaviour
 	}
 
 
-	public int TileMatching(Tile tile)
+	public List<Tile> TileMatching(Tile tile)
     {
-		if (tile.GetShape() == TileShape.ToyTops) return 0;
+		if (tile == null || 
+			tile.GetShape() == TileShape.ToyTops) return null;
 
 		List<Tile> matchingList_Line = new List<Tile>();
 		matchingList_Line = TileMatching_Line(tile);
@@ -144,21 +210,7 @@ public class GridMap : MonoBehaviour
 		MergeTileLists(matchedTiles, matchingList_Line);
 		MergeTileLists(matchedTiles, matchingList_Suare);
 
-		List<Tile> toyTiles = new List<Tile>();
-		for (int i = 0; i < matchedTiles.Count; i++)
-		{
-			Tile t = matchedTiles[i];
-			t.Explosion();
-
-			List<Tile> findToyTiles = TileMatching_ToyTops(t);
-			MergeTileLists(toyTiles, findToyTiles);
-		}
-
-		for (int j = 0; j < toyTiles.Count; j++)
-		{
-			toyTiles[j].Explosion();
-		}
-		return matchedTiles.Count;
+		return matchedTiles;
 	}
 
 	public Vector3 GridIndexToPosition(Vector3 gridIndex)
@@ -169,6 +221,22 @@ public class GridMap : MonoBehaviour
 		tilePostion.x = radius * 3.0f / 2.0f * gridIndex.x;
 		tilePostion.y = radius * Mathf.Sqrt(3.0f) * (gridIndex.y + gridIndex.x / 2.0f);
 		return tilePostion;
+	}
+
+	public List<Tile> GetTileList()
+	{
+		return _tileList;
+	}
+
+	public void MergeTileLists(List<Tile> matchedTiles, List<Tile> tiles)
+	{
+		if (tiles == null) return;
+		for (int i = 0; i < tiles.Count; i++)
+		{
+			Tile checkTile = tiles[i];
+			if (matchedTiles.Contains(checkTile) == true) continue;
+			matchedTiles.Add(checkTile);
+		}
 	}
 
 	private List<Tile> TileMatching_Line(Tile tile)
@@ -225,8 +293,7 @@ public class GridMap : MonoBehaviour
 		return matchedTiles;
 	}
 
-
-	private List<Tile> TileMatching_ToyTops(Tile tile)
+	public List<Tile> TileMatching_ToyTops(Tile tile)
     {
 		List<Tile> toyList = new List<Tile>();
 		List<Tile> tilelist = GetTile_Around(tile, 1, TileShape.ToyTops);
@@ -244,6 +311,7 @@ public class GridMap : MonoBehaviour
 	
 	private List<Tile> GetTileMatching_Square(Tile tile, int[,] squareMatrix, TileShape matchShape)
     {
+		if (tile == null) return null;
 		List<Tile> checkedTiles = new List<Tile>();
 		
 		checkedTiles.Add(tile);
@@ -258,8 +326,9 @@ public class GridMap : MonoBehaviour
 		return checkedTiles;
 	}
 
-	private List<Tile> GetTile_Around(Tile tile, int range, TileShape matchShape = TileShape.MAX)
+	public List<Tile> GetTile_Around(Tile tile, int range, TileShape matchShape = TileShape.MAX)
     {
+		if (tile == null) return null;
 		bool isFilter = matchShape != TileShape.MAX;
 		List<Tile> list = new List<Tile>();
 		
@@ -282,7 +351,7 @@ public class GridMap : MonoBehaviour
 		Vector3 checkDirection = new Vector3(0, 1, -1);
 		if(range < 0) range = Math.Max(mapWidth, mapHeight) + 1;
 
-		List<Tile> list = GetTileMatching_Line(tile, range, checkDirection, matchShape);
+		List<Tile> list = GetTileMatching_Line_Both(tile, range, checkDirection, matchShape);
 		return list;
 	}
 
@@ -291,7 +360,7 @@ public class GridMap : MonoBehaviour
 		Vector3 checkDirection = new Vector3(1, 0, -1);
 		if (range < 0) range = Math.Max(mapWidth, mapHeight) + 1;
 
-		List<Tile> list = GetTileMatching_Line(tile, range, checkDirection, matchShape);
+		List<Tile> list = GetTileMatching_Line_Both(tile, range, checkDirection, matchShape);
 		return list;
 	}
 
@@ -300,12 +369,13 @@ public class GridMap : MonoBehaviour
 		Vector3 checkDirection = new Vector3(1, -1, 0);
 		if (range < 0) range = Math.Max(mapWidth, mapHeight) + 1;
 
-		List<Tile> list = GetTileMatching_Line(tile, range, checkDirection, matchShape);
+		List<Tile> list = GetTileMatching_Line_Both(tile, range, checkDirection, matchShape);
 		return list;
 	}
 
-	private List<Tile> GetTileMatching_Line(Tile tile, int range, Vector3 checkDirection, TileShape matchShape = TileShape.MAX)
+	private List<Tile> GetTileMatching_Line_Both(Tile tile, int range, Vector3 checkDirection, TileShape matchShape = TileShape.MAX)
     {
+		if (tile == null) return null;
 		List<Tile> list = new List<Tile>();
 		int[] pingpongDir = new int[2] { 1, -1 };
 		bool isFilter = matchShape != TileShape.MAX;
@@ -337,15 +407,35 @@ public class GridMap : MonoBehaviour
 		return list;
 	}
 
-	private void MergeTileLists(List<Tile> matchedTiles, List<Tile> tiles)
+	private List<Tile> GetTileMatching_Line(Tile tile, int range, Vector3 checkDirection, bool pingpongDir, TileShape matchShape = TileShape.MAX)
 	{
-		if (tiles == null) return;
-		for (int i = 0; i < tiles.Count; i++)
+		if (tile == null) return null;
+		List<Tile> list = new List<Tile>();
+		bool isFilter = matchShape != TileShape.MAX;
+		int dir = pingpongDir == true ? 1 : -1;
+		list.Add(tile);
+
+		int count = 1;
+		for (int i = 0; i < range; i++)
 		{
-			Tile checkTile = tiles[i];
-			if (matchedTiles.Contains(checkTile) == true) continue;
-			matchedTiles.Add(checkTile);
+			int j = count * dir;
+			count++;
+
+			Vector3 indexVector = checkDirection * j;
+
+			Vector3 findIndex = indexVector + tile.GetInfo().GetGridIndex();
+			Tile getTile = GetTileFromGridIndex(findIndex);
+			if (getTile == null) continue;
+
+			if (isFilter && getTile.GetShape() != matchShape)
+			{
+				break;
+			}
+			list.Add(getTile);
 		}
+		return list;
 	}
+
+
 }
 

@@ -22,3 +22,9 @@ public enum TileDirection
 	Bottom,
 	RightBottom,
 };
+
+public enum TouchMode
+{
+	None,
+	Drag,
+};
