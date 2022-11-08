@@ -53,7 +53,9 @@ public struct TileInfo
 	}
 }
 
-
+/// <summary>
+/// 타일 오브젝트 클래스
+/// </summary>
 public class Tile : MonoBehaviour
 {
 	public bool _debug = false;
@@ -91,25 +93,38 @@ public class Tile : MonoBehaviour
 		return isDie;
     }
 
-	public void Animation_MoveIndex(Vector3 gridIndex_start, Vector3 gridIndex_dest, float durationTime = 0.1f)
+	public void SetShape(TileShape shape)
     {
+		_Info.shape = shape;
+
+		Sprite shapeImage = _shapeImages[(int)_Info.shape];
+		_spriteRenderer.sprite = shapeImage;
+	}
+
+	public TileShape GetShape()
+	{
+		return _Info.shape;
+	}
+
+	public void Animation_MoveIndex(Vector3 gridIndex_start, Vector3 gridIndex_dest, float durationTime = 0.1f)
+	{
 		StartCoroutine(Cor_Animation_MoveIndex(gridIndex_start, gridIndex_dest, durationTime));
-    }
+	}
 
 	IEnumerator Cor_Animation_MoveIndex(Vector3 gridIndex_start, Vector3 gridIndex_dest, float durationTime = 0.1f)
-    {
+	{
 		Vector3 startPos = GridMap.inst.GridIndexToPosition(gridIndex_start);
 		Vector3 destPos = GridMap.inst.GridIndexToPosition(gridIndex_dest);
 
 		for (float i = 0.0f; i <= durationTime; i += Time.deltaTime)
-        {
+		{
 			float amount = i / durationTime * 1.0f;
 			transform.localPosition = Vector3.Lerp(startPos, destPos, amount);
 			yield return null;
-        }
+		}
 		transform.localPosition = destPos;
 		yield return null;
-    }
+	}
 
 	public void Animation_MovePos(Vector3 startPos, Vector3 destPos, float durationTime = 0.1f)
 	{
@@ -128,18 +143,6 @@ public class Tile : MonoBehaviour
 		yield return null;
 	}
 
-	public void SetShape(TileShape shape)
-    {
-		_Info.shape = shape;
-
-		Sprite shapeImage = _shapeImages[(int)_Info.shape];
-		_spriteRenderer.sprite = shapeImage;
-	}
-
-	public TileShape GetShape()
-	{
-		return _Info.shape;
-	}
 
 	private void OnGUI()
 	{

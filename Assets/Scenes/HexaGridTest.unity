@@ -284,6 +284,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &7735308
@@ -497,6 +502,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &7983951
@@ -710,6 +720,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &37839323
@@ -923,6 +938,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &38400604
@@ -1136,6 +1156,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &116797236
@@ -1349,6 +1374,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &145204969
@@ -1562,6 +1592,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &154181412
@@ -1775,6 +1810,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &177165622
@@ -2021,6 +2061,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &229521565
@@ -2234,6 +2279,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &245194585
@@ -2447,6 +2497,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &245422034
@@ -2660,6 +2715,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &253232395
@@ -2873,6 +2933,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &273140490
@@ -3086,6 +3151,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &289467760
@@ -3299,6 +3369,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &343526449
@@ -3512,6 +3587,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &344864679
@@ -3725,6 +3805,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &368734784
@@ -3938,6 +4023,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &388839606
@@ -4151,6 +4241,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &432697897
@@ -4396,6 +4491,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &507548145
@@ -4609,6 +4709,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &546219699
@@ -4822,6 +4927,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &594226581
@@ -5035,6 +5145,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &604523382
@@ -5248,6 +5363,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &615349217
@@ -5461,6 +5581,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &627652819
@@ -5674,6 +5799,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &631275401
@@ -5887,6 +6017,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &676555159
@@ -6100,6 +6235,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &711969016
@@ -6549,6 +6689,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &735193451
@@ -6762,6 +6907,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &742622411
@@ -6975,6 +7125,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &805707662
@@ -7188,6 +7343,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &854633026
@@ -7401,6 +7561,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &859769996
@@ -7614,6 +7779,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &876537197
@@ -7827,6 +7997,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &878439904
@@ -8040,6 +8215,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &934835543
@@ -8253,6 +8433,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &937721848
@@ -8466,6 +8651,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &949002471
@@ -8679,6 +8869,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &970916105
@@ -9032,6 +9227,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1056422747
@@ -9245,6 +9445,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1059963473
@@ -9458,6 +9663,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1062808591
@@ -9671,6 +9881,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1064652419
@@ -9884,6 +10099,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1071784657
@@ -10097,6 +10317,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1073767244
@@ -10310,6 +10535,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1081617912
@@ -10523,6 +10753,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1090924579
@@ -10736,6 +10971,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1092370343
@@ -10949,6 +11189,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1098974046
@@ -11162,6 +11407,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1160859295
@@ -11475,6 +11725,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1203048519
@@ -11688,6 +11943,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1239022763
@@ -11901,6 +12161,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1267968183
@@ -12114,6 +12379,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1268829563
@@ -12327,6 +12597,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1276901240
@@ -12540,6 +12815,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1312300431
@@ -12753,6 +13033,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1331399555
@@ -12966,6 +13251,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1359865823
@@ -13179,6 +13469,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1363912375
@@ -13392,6 +13687,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1370463789
@@ -13605,6 +13905,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1409683100
@@ -13818,6 +14123,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1427152485
@@ -14031,6 +14341,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1461818282
@@ -14244,6 +14559,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1462250029
@@ -14457,6 +14777,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1529340864
@@ -14670,6 +14995,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1541229857
@@ -14883,6 +15213,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1614637631
@@ -15096,6 +15431,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1685021588
@@ -15309,6 +15649,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1719105857
@@ -15522,6 +15867,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1719297113
@@ -15735,6 +16085,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1724050865
@@ -15948,6 +16303,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1744066087
@@ -16161,6 +16521,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1756468189
@@ -16374,6 +16739,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1909415413
@@ -16587,6 +16957,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1912632991
@@ -16800,6 +17175,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1938719011
@@ -17013,6 +17393,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1941465402
@@ -17226,6 +17611,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1944470096
@@ -17439,6 +17829,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1944701669
@@ -17652,6 +18047,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1964944120
@@ -17751,7 +18151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
-  mapWidth: 4
+  mapWidth: 3
   mapHeight: 3
   hexRadius: 0.38
   tilePrefab: {fileID: 7332235787663622600, guid: c95cb2bbb3f3d904db842cf113fd615e, type: 3}
@@ -17928,6 +18328,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1972767223
@@ -18141,6 +18546,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &1982928913
@@ -18472,6 +18882,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &2020518409
@@ -18685,6 +19100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &2038441175
@@ -18898,6 +19318,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &2061221265
@@ -19111,6 +19536,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &2072843109
@@ -19324,6 +19754,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &2074275271
@@ -19537,6 +19972,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &2092959705
@@ -19750,6 +20190,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &2101154633
@@ -19963,6 +20408,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &2118886255
@@ -20176,6 +20626,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _debug: 0
+  _Info:
+    x: 0
+    y: 0
+    z: 0
+    shape: 0
   _spriteRenderer: {fileID: 0}
   _shapeImages: []
 --- !u!23 &2127225726
