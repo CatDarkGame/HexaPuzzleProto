@@ -100,6 +100,30 @@ public class GridMap : MonoBehaviour
 		return tile;
 	}
 
+	public void KillTile(Tile tile)
+    {
+		if (tile == null) return;
+
+		_tileList.Remove(tile);
+		Destroy(tile.gameObject);
+	}
+
+
+	public Vector3 GridIndexToPosition(Vector3 gridIndex)
+	{
+		Vector3 tilePostion = Vector3.zero;
+
+		float radius = hexRadius;
+		tilePostion.x = radius * 3.0f / 2.0f * gridIndex.x;
+		tilePostion.y = radius * Mathf.Sqrt(3.0f) * (gridIndex.y + gridIndex.x / 2.0f);
+		return tilePostion;
+	}
+
+	public List<Tile> GetTileList()
+	{
+		return _tileList;
+	}
+
 	public Tile GetTileFromGridIndex(Vector3 gridIndex)
 	{
 		for (int i = 0; i < _tileList.Count; i++)
@@ -109,14 +133,19 @@ public class GridMap : MonoBehaviour
 		return null;
 	}
 
-	public void KillTile(Tile tile)
-    {
-		if (tile == null) return;
+	
 
-		_tileList.Remove(tile);
-		Destroy(tile.gameObject);
+	public TileShape GetTileShapeRandom()
+	{
+		TileShape[] shapeRandomList = { TileShape.Red, TileShape.Green, TileShape.Orange, TileShape.Purple, TileShape.Blue, TileShape.ToyTops };
+		//TileShape[] shapeRandomList = { TileShape.Red, TileShape.Green, TileShape.Orange, TileShape.Purple, TileShape.Blue };
+		int randomShapeMax = shapeRandomList.Length;
+		int randomShape = UnityEngine.Random.Range(0, randomShapeMax);
+		return shapeRandomList[randomShape];
 	}
 
+
+	//
 	public List<Tile> PullDownTiles(Vector3 gridIndex)
 	{
 		int r1 = Mathf.Max(-((int)gridIndex.x + mapHeight), -mapHeight);
@@ -140,6 +169,7 @@ public class GridMap : MonoBehaviour
 			tile.SetGridIndex(checkIndex);
 		}
 		
+		// TODO : 장애물을 고려한 기능 추가 필요
 		return pullTiles;
 	}
 
@@ -167,15 +197,29 @@ public class GridMap : MonoBehaviour
 		return reloadTiles;
 	}
 
-	public TileShape GetTileShapeRandom()
+	public bool CheckInGridArray(Vector3 gridIndex)
     {
-		TileShape[] shapeRandomList = { TileShape.Red, TileShape.Green, TileShape.Orange, TileShape.Purple, TileShape.Blue, TileShape.ToyTops };
-		//TileShape[] shapeRandomList = { TileShape.Red, TileShape.Green, TileShape.Orange, TileShape.Purple, TileShape.Blue };
-		int randomShapeMax = shapeRandomList.Length;
-		int randomShape = UnityEngine.Random.Range(0, randomShapeMax);
-		return shapeRandomList[randomShape];
-	}
+		bool isIn = false;
 
+		int width = mapWidth - 1;
+		int height = mapHeight;
+		for (int q = -width; q <= width; q++)
+		{
+			int r1 = Mathf.Max(-width, -q - width);
+			int r2 = Mathf.Min(height, -q + height);
+
+			for (int r = r1; r < r2; r++)
+			{
+				Vector3 index = new Vector3(q, r, -q - r);
+				if (gridIndex== index)
+                {
+					isIn = true;
+					break;
+                }
+			}
+		}
+		return isIn;
+	}
 
 
 	public Tile TileSwap(Tile tile, TileDirection direction)
@@ -213,21 +257,6 @@ public class GridMap : MonoBehaviour
 		return matchedTiles;
 	}
 
-	public Vector3 GridIndexToPosition(Vector3 gridIndex)
-    {
-		Vector3 tilePostion = Vector3.zero;
-
-		float radius = hexRadius;
-		tilePostion.x = radius * 3.0f / 2.0f * gridIndex.x;
-		tilePostion.y = radius * Mathf.Sqrt(3.0f) * (gridIndex.y + gridIndex.x / 2.0f);
-		return tilePostion;
-	}
-
-	public List<Tile> GetTileList()
-	{
-		return _tileList;
-	}
-
 	public void MergeTileLists(List<Tile> matchedTiles, List<Tile> tiles)
 	{
 		if (tiles == null) return;
@@ -238,6 +267,10 @@ public class GridMap : MonoBehaviour
 			matchedTiles.Add(checkTile);
 		}
 	}
+
+	//
+
+	
 
 	private List<Tile> TileMatching_Line(Tile tile)
     {

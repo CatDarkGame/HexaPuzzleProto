@@ -153,5 +153,19 @@ public class Tile : MonoBehaviour
 		GUI.Label(new Rect(position.x - (textSize.x / 2), Screen.height - position.y - (textSize.y / 2), textSize.x * 2, textSize.y), text, style);
 	}
 
+
+	public void ColorCheck()
+    {
+		StartCoroutine(Cor_ColorCheck());
+    }
+
+	IEnumerator Cor_ColorCheck()
+    {
+		_spriteRenderer.color = Color.red;
+
+		yield return new WaitForSeconds(1.0f);
+		_spriteRenderer.color = Color.white;
+    }
+
 }
 
