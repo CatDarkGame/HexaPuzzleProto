@@ -19,7 +19,7 @@ public class GridMap : MonoBehaviour
 												{ 1, -1, 0 }};
 	public int[,] DirectionMatrix { get { return _directionMatrix; } }
 
-	public Vector3 GetGridDirection(TileDirection direction)
+	public Vector3 GetGridDirection(GridDirection direction)
     {
 		Vector3 dir = Vector3.zero;
 		int dirIndex = (int)direction;
@@ -35,17 +35,18 @@ public class GridMap : MonoBehaviour
 
 	public int MapWidth { get { return mapWidth; } }
 	public int MapHeight { get { return mapHeight; } }
-	
-	private List<Tile> _tileList = new List<Tile>();
-	public GameObject tilePrefab = null;
+	public float GridRadius { get { return hexRadius; } }
 
+	private List<Tile> _tileList = new List<Tile>();
 	private int _tileCreateCount = 0;
 
+	public GameObject tilePrefab = null;    // TODO : 오브젝트 폴링으로 대체
+	
 	private void Awake()
 	{
 		if (!inst) inst = this;
 
-		GenerateGrid();
+		//GenerateGrid();
 	}
 
     private void OnDestroy()
@@ -108,7 +109,7 @@ public class GridMap : MonoBehaviour
 		Vector3 tilePostion = GridIndexToPosition(gridIndex);
 		string objName = string.Format("Tile[{0}]", _tileCreateCount++); ;
 
-		GameObject go = Instantiate(tilePrefab);
+		GameObject go = Instantiate(tilePrefab);	// TODO : 오브젝트 폴링으로 대체
 		go.name = objName;
 		go.transform.localPosition = tilePostion;
 		go.transform.SetParent(transform);
@@ -125,7 +126,7 @@ public class GridMap : MonoBehaviour
 		if (tile == null) return;
 
 		_tileList.Remove(tile);
-		Destroy(tile.gameObject);
+		Destroy(tile.gameObject);   // TODO : 오브젝트 폴링으로 대체
 	}
 
 	// 그리드 인덱스 -> Transform 좌표 변환
@@ -158,8 +159,8 @@ public class GridMap : MonoBehaviour
 	// 타일 종류 랜덤 참조
 	public TileShape GetTileShapeRandom()
 	{
-		//TileShape[] shapeRandomList = { TileShape.Red, TileShape.Green, TileShape.Orange, TileShape.Purple, TileShape.Blue, TileShape.ToyTops };
-		TileShape[] shapeRandomList = { TileShape.Red, TileShape.Green, TileShape.Orange, TileShape.Purple, TileShape.Blue };
+		TileShape[] shapeRandomList = { TileShape.Red, TileShape.Green, TileShape.Orange, TileShape.Purple, TileShape.Blue, TileShape.ToyTops };
+		//TileShape[] shapeRandomList = { TileShape.Red, TileShape.Green, TileShape.Orange, TileShape.Purple, TileShape.Blue };
 		int randomShapeMax = shapeRandomList.Length;
 		int randomShape = UnityEngine.Random.Range(0, randomShapeMax);
 		return shapeRandomList[randomShape];
@@ -242,7 +243,7 @@ public class GridMap : MonoBehaviour
 	}
 
 
-	public Tile TileSwap(Tile tile, TileDirection direction)
+	public Tile TileSwap(Tile tile, GridDirection direction)
     {
 		if (tile == null) return null;
 		Vector3 indexVector = new Vector3(_directionMatrix[(int)direction, 0],

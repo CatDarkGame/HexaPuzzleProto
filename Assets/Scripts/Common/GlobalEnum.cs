@@ -14,8 +14,8 @@ public enum TileShape
 	MAX,
 };
 
-// 
-public enum TileDirection
+// 그리드 방향 정보
+public enum GridDirection
 {
 	LeftTop,
 	Top,
@@ -23,6 +23,8 @@ public enum TileDirection
 	LeftBottom,
 	Bottom,
 	RightBottom,
+
+	MAX,
 };
 
 public enum GridAxis

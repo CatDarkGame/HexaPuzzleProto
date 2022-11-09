@@ -60,21 +60,21 @@ public static class GridUtill
 		int maxLine = mapWidth + mapHeight;
 
 		Vector3 gridIndex_Max = Vector3.zero;
-		Vector3 checkDir = gridMap.GetGridDirection(TileDirection.RightTop);
+		Vector3 checkDir = gridMap.GetGridDirection(GridDirection.RightTop);
 		if (gridAxis==GridAxis.X)
         {
 			gridIndex_Max = GetGridIndex_X_Max(gridMap, gridIndex);
-			checkDir = gridMap.GetGridDirection(TileDirection.RightTop);
+			checkDir = gridMap.GetGridDirection(GridDirection.RightTop);
 		}
 		else if(gridAxis==GridAxis.Y)
         {
 			gridIndex_Max = GetGridIndex_Y_Max(gridMap, gridIndex);
-			checkDir = gridMap.GetGridDirection(TileDirection.Top);
+			checkDir = gridMap.GetGridDirection(GridDirection.Top);
 		}
 		else if(gridAxis==GridAxis.Z)
         {
 			gridIndex_Max = GetGridIndex_Z_Max(gridMap, gridIndex);
-			checkDir = gridMap.GetGridDirection(TileDirection.LeftTop);
+			checkDir = gridMap.GetGridDirection(GridDirection.LeftTop);
 		}
 
 		List<Tile> checkTileList = new List<Tile>();
@@ -88,6 +88,22 @@ public static class GridUtill
 		}
 
 		return checkTileList;
+	}
+
+	public static List<Tile> GetTileList_Around(GridMap gridMap, Vector3 gridIndex, int range)
+	{
+		List<Tile> list = new List<Tile>();
+		for (int dx = -range; dx <= range; dx++)
+		{
+			for (int dy = Mathf.Max(-range, -dx - range); dy <= Mathf.Min(range, -dx + range); dy++)
+			{
+				Vector3 findIndex = new Vector3(dx, dy, -dx - dy) + gridIndex;
+				Tile getTile = gridMap.GetTileFromGridIndex(findIndex);
+				if (getTile == null) continue;
+				list.Add(getTile);
+			}
+		}
+		return list;
 	}
 
 	/*
@@ -126,25 +142,7 @@ public static class GridUtill
 		return matchedTiles;
 	}
 
-		public List<Tile> GetTile_Around(Tile tile, int range, TileShape matchShape = TileShape.MAX)
-    {
-		if (tile == null) return null;
-		bool isFilter = matchShape != TileShape.MAX;
-		List<Tile> list = new List<Tile>();
 		
-		for (int dx = -range; dx <= range; dx++)
-		{
-			for (int dy = Mathf.Max(-range, -dx - range); dy <= Mathf.Min(range, -dx + range); dy++)
-			{
-				Vector3 findIndex = new Vector3(dx, dy, -dx - dy) + tile.GetInfo().GetGridIndex();
-				Tile getTile = GetTileFromGridIndex(findIndex);
-				if (getTile == null) continue;
-				if (isFilter && getTile.GetShape() != matchShape) continue;
-				list.Add(getTile);
-			}
-		}
-		return list;
-	}
 
 	 */
 
