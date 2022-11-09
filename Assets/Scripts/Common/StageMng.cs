@@ -8,7 +8,7 @@ public class StageMng : MonoBehaviour
     public static StageMng inst;
 
     private int _moveLimit = 20;
-    private int _toyTopLimit = 10;
+    private int _toyTopLimit = 15;
     private int _score = 0;
     public int MoveLimit { get { return _moveLimit; } }
     public int ToyTopLimit { get { return _toyTopLimit; } }
@@ -31,7 +31,7 @@ public class StageMng : MonoBehaviour
     private void Init_Stage()
     {
         _moveLimit = 20;
-        _toyTopLimit = 10;
+        _toyTopLimit = 15;
         _score = 0;
         GridMap.inst.GenerateGrid();
         _tileController.ReloadGridMap();
